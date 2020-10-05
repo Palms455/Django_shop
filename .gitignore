@@ -8,6 +8,7 @@ __pycache__/
 
 # Distribution / packaging
 shop_env/
+media/
 django_shop/settings_local.py
 .Python
 build/
