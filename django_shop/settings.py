@@ -10,7 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
-from .settings_local import DEBUG, DATABASES, SECRET_KEY
+from .settings_local import DEBUG, DATABASES, SECRET_KEY, EMAIL_HOST_USER, EMAIL_HOST_PASSWORD, REDIS_HOST, REDIS_PORT, REDIS_DB
 
 from pathlib import Path
 import os
@@ -122,3 +122,14 @@ CART_SESSION_ID = 'cart' # ключ хранения данных корзины
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+
+EMAIL_POST = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+
+CELERY_BROKER_URL = 'redis://' + REDIS_HOST + ':' + REDIS_PORT + '/0'
+CELERY_BROKER_TRANSPORT_OPTIONS = {'visibility_timeout': 3600}
+CELERY_RESULT_BACKEND = 'redis://' + REDIS_HOST + ':' + REDIS_PORT + '/0'
+CELERY_ACCEPT_CONTENT = {'application/json'}
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'

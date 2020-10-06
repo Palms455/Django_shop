@@ -1,0 +1,5 @@
+celery worker --app=app.app --pool=eventlet --loglevel=INFO
+celery worker --app=app.app --pool=gevent --loglevel=INFO
+celery worker --app=app.app --pool=solo --loglevel=INFO
+
+celery -A django_shop worker --pool=solo --loglevel=INFO
