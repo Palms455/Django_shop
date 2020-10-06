@@ -14,9 +14,9 @@ def order_create(request):
                 OrderItem.objects.create(order=order,
                                          product=item['product'],
                                          price=item['price'],
-                                         qunatity=item['quantity'])
+                                         quantity=item['quantity'])
             cart.clear() #очистка корзины
-            return render(request, 'orders/order/created.html', {'order': order})
+            return render(request, 'orders/order/create.html', {'order': order})
     else:
         form = OrderCreateForm()
-    return render(request, 'orders/order/created.html', {'cart':cart, 'form': form})
+    return render(request, 'orders/order/create.html', {'cart':cart, 'form': form})
