@@ -11,13 +11,19 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 from .settings_local import DEBUG, DATABASES, SECRET_KEY, EMAIL_HOST_USER, EMAIL_HOST_PASSWORD, REDIS_HOST, REDIS_PORT, REDIS_DB
-
+from .settings_local import BRAINTREE_MERCHANT_ID, BRAINTREE_PRIVATE_KEY, BRAINTREE_PUBLIC_KEY
 from pathlib import Path
 import os
+from braintree import Configuration, Environment
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
+Configuration.configure(
+ Environment.Sandbox,
+ BRAINTREE_MERCHANT_ID,
+ BRAINTREE_PUBLIC_KEY,
+ BRAINTREE_PRIVATE_KEY
+)
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
@@ -41,7 +47,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'shop',
     'cart',
-    'orders'
+    'orders',
+    'payment'
 ]
 
 MIDDLEWARE = [
