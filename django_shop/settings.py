@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 from .settings_local import DEBUG, DATABASES, SECRET_KEY, EMAIL_HOST_USER, EMAIL_HOST_PASSWORD, REDIS_HOST, REDIS_PORT, REDIS_DB
 from .settings_local import BRAINTREE_MERCHANT_ID, BRAINTREE_PRIVATE_KEY, BRAINTREE_PUBLIC_KEY
+from .settings_local import REDIS_DB, REDIS_PORT, REDIS_HOST
 from pathlib import Path
 import os
 from braintree import Configuration, Environment
